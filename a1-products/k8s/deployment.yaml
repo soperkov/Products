@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: a1-products
+  labels:
+    app: a1-products
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: a1-products
+  template:
+    metadata:
+      labels:
+        app: a1-products
+    spec:
+      containers:
+        - name: a1-products
+          image: a1-products:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 30

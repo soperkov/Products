@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: a1-webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: a1-webserver
+  template:
+    metadata:
+      labels:
+        app: a1-webserver
+    spec:
+      containers:
+        - name: a1-webserver
+          image: a1-webserver:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            periodSeconds: 5
+            initialDelaySeconds: 3

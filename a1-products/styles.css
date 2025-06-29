@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .container {
+    max-width: 850px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .chart-wrapper {
+    position: relative;
+    height: 420px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease;
+  }
+  
+  button:hover {
+    transform: translateY(-1px);
+  }

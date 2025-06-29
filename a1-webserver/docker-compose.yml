@@ -1,0 +1,13 @@
+services:
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: a1-webserver
+    ports:
+      - "80:80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      interval: 10s
+      retries: 3
+      start_period: 3s
